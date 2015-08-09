@@ -1,0 +1,53 @@
+
+<div class="message1">
+<h2>Add New User</h2>
+ This is Add new user
+ <table class="table table-bordered">
+    <tbody>
+	<form ng-submit="submit()">
+      <tr>
+	    <td>FirstName</td>
+        <td> <input type="text" ng-model="newuser.firstname" class="form-control" id="FirstName" ></input></td>
+      </tr> 
+	  <tr>
+	    <td>LastName</td>
+        <td> <input type="text" ng-model="newuser.lastname" class="form-control" id="LastName" ></input></td>
+      </tr>
+	  <tr>
+	    <td>Email</td>
+        <td> <input type="text" ng-model="newuser.email" class="form-control" id="Email" ></input></td>
+      </tr>
+	  <tr>
+	   <td></td>
+	   <td>
+	       <button type="button" class="btn btn-primary" ng-click="register()" >Submit</button>
+		   <input type="submit" id="submit" value="Submit" ng-click="register()" />
+		   
+	   </td>
+	  </tr>
+	  </form>   
+	  
+    </tbody>
+  </table>
+  <table class="table table-bordered">
+  <thead>
+      <tr>
+	  <td>sort by name</td>
+	  <td>
+	  <input type="text" ng-model="name" class="form-control" id="Email" ></input></td>
+      </tr>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+	  <tbody>
+      <tr ng-repeat="users in user | filter:name | orderBy:firstname ">
+        <td>{{ users.firstname   | uppercase}}</td>
+        <td>{{ users.lastname | uppercase}}</td>
+        <td>{{ users.email  | uppercase}}</td>
+     </tr>
+    </tbody>
+  </table>
+</div>

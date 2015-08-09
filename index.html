@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8"/>
+  <head>
+    <title>AngularJS Routing example</title>
+	<style>
+	.message1{background-color:#99CCFF; }
+	.message2{background-color:#CC99FF; }
+	</style>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+      
+
+	<script>
+	    //Define an angular module for our app
+	    var sampleApp = angular.module('sampleApp', []);
+
+	    sampleApp.config(['$routeProvider',
+          function ($routeProvider) {
+              $routeProvider.
+                when('/AddNewUser', {
+                    templateUrl: 'templates/myview.html',
+					controller:'AddOrderController',
+                   
+                }).
+                when('/ShowNumberofUser', {
+                    templateUrl: 'templates/myviews.html',
+					controller:'AddOrderController',
+					
+                    
+                }).
+                otherwise({
+                    redirectTo: '/AddNewUser'
+                });
+          }]);
+
+
+	    sampleApp.controller('AddOrderController', function ($scope) {
+			
+			$scope.user=
+			   [{firstname:"dev",lastname:"my",email:"hello"},
+			   {firstname:"akash",lastname:"my",email:"hello"},
+			   ];
+			 $scope.register = function() {
+			 var a=$scope.newuser.firstname;
+			 var b=$scope.newuser.lastname;
+			 var c=$scope.newuser.email;
+			 $scope.user.push({firstname:$scope.newuser.firstname,lastname:$scope.newuser.lastname,email:$scope.newuser.email});
+			 };  
+	
+			
+	    });
+		
+	    sampleApp.controller('ShowOrdersController', function ($scope) {
+	        $scope.message = 'This is Show orders screen';
+			
+
+	    });
+	</script>
+  </head>
+
+  <body ng-app="sampleApp">
+    <div class="container">
+		<div class="row">
+		<div class="col-md-3">
+			<ul class="nav">
+				<li><a href="#AddNewUser"> Add New User </a></li>
+				<li><a href="#ShowNumberofUser"> Number of Users </a></li>
+			</ul>
+		</div>
+		<div class="col-md-9">
+		  	<div ng-view></div>
+		</div>
+		</div>
+    </div>
+	
+  </body>
+</html>

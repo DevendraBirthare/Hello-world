@@ -1,0 +1,21 @@
+
+<div class="message2">
+<h2>Number of users</h2> 
+{{ message }}
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="users in user">
+        <td>{{ users.firstname }}</td>
+        <td>{{ users.lastname }}</td>
+        <td>{{ users.email }}</td>
+     </tr>
+    </tbody>
+  </table>
+</div>
